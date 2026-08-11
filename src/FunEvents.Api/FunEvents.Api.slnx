@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="../../clients/FunEvents.ConsoleClient/FunEvents.ConsoleClient.csproj" />
+  <Project Path="../FunEvents.Application/FunEvents.Application.csproj" />
+  <Project Path="../FunEvents.Domain/FunEvents.Domain.csproj" />
+  <Project Path="../FunEvents.Infrastructure/FunEvents.Infrastructure.csproj" />
+  <Project Path="FunEvents.Api.csproj" />
+</Solution>
