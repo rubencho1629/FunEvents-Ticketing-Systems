@@ -1,5 +1,6 @@
 ﻿using FunEvents.Application.Abstractions.Persistence;
 using FunEvents.Domain.Entities;
+using FunEvents.Domain.Exceptions;
 
 namespace FunEvents.Application.Bookings.ReserveTickets;
 
@@ -53,7 +54,7 @@ public sealed class ReserveTicketsHandler
 
         if (eventEntity is null)
         {
-            throw new InvalidOperationException(
+            throw new NotFoundException(
                 $"Event '{command.EventCode}' was not found.");
         }
 
@@ -63,7 +64,7 @@ public sealed class ReserveTicketsHandler
 
         if (user is null)
         {
-            throw new InvalidOperationException(
+            throw new NotFoundException(
                 $"User '{command.UserCode}' was not found.");
         }
 

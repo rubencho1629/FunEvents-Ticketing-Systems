@@ -3,6 +3,7 @@ using System;
 using FunEvents.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FunEvents.Infrastructure.Migrations
 {
     [DbContext(typeof(FunEventsDbContext))]
-    partial class FunEventsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260812175034_AddEventConcurrency")]
+    partial class AddEventConcurrency
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

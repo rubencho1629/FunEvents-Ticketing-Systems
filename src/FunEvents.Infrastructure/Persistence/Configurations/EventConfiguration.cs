@@ -31,5 +31,8 @@ public sealed class EventConfiguration : IEntityTypeConfiguration<Event>
 
         builder.Property(x => x.AvailableTickets)
             .IsRequired();
+
+        builder.Property(x => x.Version)
+            .IsRowVersion();
     }
 }

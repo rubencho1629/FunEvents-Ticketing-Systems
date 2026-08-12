@@ -1,4 +1,7 @@
-﻿namespace FunEvents.Domain.Entities;
+﻿using FunEvents.Domain.Exceptions;
+
+
+namespace FunEvents.Domain.Entities;
 
 public sealed class Event
 {
@@ -8,6 +11,7 @@ public sealed class Event
     public DateTimeOffset Date { get; private set; }
     public int Capacity { get; private set; }
     public int AvailableTickets { get; private set; }
+    public uint Version { get; private set; }
 
     private Event()
     {
@@ -47,8 +51,8 @@ public sealed class Event
                 "Ticket quantity must be greater than zero.");
 
         if (quantity > AvailableTickets)
-            throw new InvalidOperationException(
-                "There are not enough tickets available.");
+            throw new ConflictException(
+           "There are not enough tickets available.");
 
         AvailableTickets -= quantity;
     }

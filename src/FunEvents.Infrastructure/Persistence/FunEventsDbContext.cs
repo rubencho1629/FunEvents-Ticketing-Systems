@@ -1,7 +1,7 @@
 ﻿using FunEvents.Application.Abstractions.Persistence;
 using FunEvents.Domain.Entities;
+using FunEvents.Domain.Exceptions;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.Emit;
 
 namespace FunEvents.Infrastructure.Persistence;
 
@@ -21,5 +21,19 @@ public sealed class FunEventsDbContext : DbContext, IUnitOfWork
     {
         modelBuilder.ApplyConfigurationsFromAssembly(
             typeof(FunEventsDbContext).Assembly);
+    }
+
+    public override async Task<int> SaveChangesAsync(
+        CancellationToken cancellationToken = default)
+    {
+        try
+        {
+            return await base.SaveChangesAsync(cancellationToken);
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            throw new ConflictException(
+                "The event availability changed while the reservation was being processed. Please try again.");
+        }
     }
 }

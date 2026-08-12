@@ -4,16 +4,22 @@ using FunEvents.Infrastructure.Persistence;
 using FunEvents.Infrastructure.Persistence.Seed;
 using Microsoft.EntityFrameworkCore;
 using FunEvents.Api.Endpoints;
+using FunEvents.Api.ExceptionHandling;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddProblemDetails();
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddScoped<ReserveTicketsHandler>();
 
 var app = builder.Build();
+
+app.UseExceptionHandler();
 
 if (app.Environment.IsDevelopment())
 {
