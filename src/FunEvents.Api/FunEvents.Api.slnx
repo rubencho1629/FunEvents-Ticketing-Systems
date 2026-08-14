@@ -1,5 +1,7 @@
 <Solution>
   <Project Path="../../clients/FunEvents.ConsoleClient/FunEvents.ConsoleClient.csproj" />
+  <Project Path="../../tests/FunEvents.IntegrationTests/FunEvents.IntegrationTests.csproj" Id="e87ca2b6-cd12-4d11-b6a7-cd557c8661e6" />
+  <Project Path="../../tests/FunEvents.UnitTests/FunEvents.UnitTests.csproj" Id="53f8d0f1-395d-48e7-8598-358e46cbae1b" />
   <Project Path="../FunEvents.Application/FunEvents.Application.csproj" />
   <Project Path="../FunEvents.Domain/FunEvents.Domain.csproj" />
   <Project Path="../FunEvents.Infrastructure/FunEvents.Infrastructure.csproj" />

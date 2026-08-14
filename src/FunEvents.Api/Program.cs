@@ -45,3 +45,4 @@ app.MapGet("/", () => Results.Ok(new
 app.MapBookingsEndpoints();
 
 app.Run();
+public partial class Program;
